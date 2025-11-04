@@ -1,4 +1,4 @@
-import { Articulo } from './articulo';
+import { Articulo } from './modelos/articulo';
 import { Injectable } from '@angular/core';
 
 const ARTICULOS: Articulo[] = [
@@ -14,6 +14,10 @@ export class Articles {
 
   getArticulos() {
     return ARTICULOS;
+  }
+
+  getOneArticle(id: number): Articulo | undefined {
+    return ARTICULOS.find(art => art.id === id);
   }
 
 }

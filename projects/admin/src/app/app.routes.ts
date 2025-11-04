@@ -6,6 +6,10 @@ export const routes: Routes = [
     loadComponent: () => import('./componentes/articulos/articulos').then(m => m.Articulos)
   },
   {
+    path: 'articulo-detalle/:id',
+    loadComponent: () => import('./componentes/articulos/detalle-articulo/detalle-articulo').then(m => m.DetalleArticulo)
+  },
+  {
     path: 'clientes',
     loadComponent: () => import('./componentes/clientes/clientes').then(m => m.Clientes)
   },

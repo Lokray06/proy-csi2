@@ -1,6 +1,6 @@
 import { Component, Input, input } from '@angular/core';
-import { Cliente } from '../../../../../shared/src/lib/modelos/cliente';
 import { FormsModule } from '@angular/forms';
+import { Cliente } from '../../../../../../shared/src/lib/modelos/cliente';
 
 @Component({
   selector: 'app-detalle-cliente',

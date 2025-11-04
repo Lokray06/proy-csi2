@@ -1,0 +1,19 @@
+<h2>Listado de publicaciones</h2>
+<form (ngSubmit)="addPost()" #postForm="ngForm">
+  <input
+  type="text"
+  placeholder="Título"
+  [(ngModel)]="newPost.title"
+  name="title"
+  required>
+  <textarea
+  placeholder="Mensaje"
+  [(ngModel)]="newPost.body"
+  name="body"></textarea>
+  <button type="submit" [disabled]="!postForm.form.valid">Añadir publicación</button>
+</form>
+<ul>
+  @for (post of posts; track $index) {
+    <li> {{$index}}  {{ post.title }}</li>
+  }
+</ul>

@@ -1,10 +1,11 @@
 import { Component, inject, signal } from '@angular/core';
 import { Articles } from '../../../../../shared/src/lib/articles';
 import { DetalleArticulo } from "./detalle-articulo/detalle-articulo";
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-articulos',
-  imports: [DetalleArticulo],
+  imports: [RouterLink],
   templateUrl: './articulos.html',
   styleUrl: './articulos.css'
 })

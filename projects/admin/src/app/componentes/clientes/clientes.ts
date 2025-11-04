@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { ClientesService } from '../../../../../shared/src/lib/clientes-service';
 import { RouterLink } from "@angular/router";
-import { DetalleCliente } from "../detalle-cliente/detalle-cliente";
+import { DetalleCliente } from "./detalle-cliente/detalle-cliente";
 import { Cliente } from '../../../../../shared/src/lib/modelos/cliente';
 
 @Component({
