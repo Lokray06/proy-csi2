@@ -20,7 +20,7 @@ export class Posts {
   private postService = inject(PostService);
 
   ngOnInit(): void {
-    this.postService.getPosts().subscribe((data: Post[]) => {
+    this.postService.getItems<Post>('posts').subscribe((data: Post[]) => {
       this.posts = data.slice(0, 10); // cargar solo los primeros 10 posts
       // this.posts.set(data.slice(0, 10)); // version con signals
       console.log('Posts cargados:', this.posts);
@@ -29,7 +29,7 @@ export class Posts {
   }
 
   addPost(): void {
-    this.postService.createPost(this.newPost).subscribe((createdPost: Post) => {
+    this.postService.createItem<Post>('posts', this.newPost).subscribe((createdPost: Post) => {
       this.posts.unshift(createdPost);
       this.newPost = { title: '', body: '' };
     });

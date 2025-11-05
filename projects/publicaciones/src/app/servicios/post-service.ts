@@ -7,17 +7,23 @@ import { Post } from '../modelos/post';
   providedIn: 'root'
 })
 export class PostService {
-  private url = 'https://jsonplaceholder.typicode.com/posts';
+  // MOdifico el servicio para que traiga la colección de datos que me interesa, por ejemplo posts o usuarios
+  private url = 'https://jsonplaceholder.typicode.com';
+  tablaURL = '';
 
   private http = inject(HttpClient);
 
 
-  getPosts(): Observable<Post[]> {
-    return this.http.get<Post[]>(this.url);
+  getItems<T>(tabla: string): Observable<T[]> {
+    return this.http.get<T[]>(this.url + '/' + tabla);
   }
 
-  createPost(post: Post): Observable<Post> {
-    return this.http.post<Post>(this.url, post);
+  getItem<T>(tabla: string, id: number): Observable<T> {
+    return this.http.get<T>(`${this.url}/${tabla}/${id}`);
   }
-  
+
+  createItem<T>(tabla: string, objeto: T): Observable<T> {
+    return this.http.post<T>(`${this.url}/${tabla}`, objeto);
+  }
+
 }

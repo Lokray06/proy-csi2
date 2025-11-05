@@ -1,0 +1,23 @@
+<label for="color">Favorite Color:</label>
+<input id="color" type="text" [formControl]="favoriteColorControl" />
+
+<br />
+
+<p>Tu color favorito es: {{ favoriteColorControl.value }}</p>
+<button class="btn btn-success" (click)="cambiaColor()">Modifica nombre</button>
+<hr />
+<form [formGroup]="perfilUsusario" class="container w-50 m-auto" (ngSubmit)="onSubmit()">
+  <label for="id">id</label
+  ><input class="form-control" id="id" type="number" formControlName="id" />
+  <label for="name">name</label
+  ><input class="form-control" id="name" type="text" formControlName="name" />
+  <label for="username">username</label
+  ><input class="form-control" id="username" type="text" formControlName="username" />
+  <label for="email">email</label
+  ><input class="form-control" id="email" type="text" formControlName="email" />
+  <label for="phone">phone</label
+  ><input class="form-control" id="phone" type="text" formControlName="phone" />
+  <label for="website">website</label
+  ><input class="form-control" id="website" type="text" formControlName="website" />
+  <button type="submit" class="btn btn-primary mt-3">Submit</button>
+</form>
