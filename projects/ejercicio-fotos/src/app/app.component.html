@@ -1,0 +1,51 @@
+<!-- File: src/app/app.component.html -->
+
+<!-- Tailwind CDN and Viewport Meta for Preview -->
+
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+<script>
+    tailwind.config = {
+        darkMode: 'class',
+        theme: {
+            extend: {
+                fontFamily: {
+                    sans: ['Inter', 'sans-serif'],
+                },
+            }
+        }
+    }
+</script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<div class="min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 font-sans">
+    <!-- Navigation Menu -->
+    <nav class="bg-indigo-700 dark:bg-indigo-900 shadow-lg sticky top-0 z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Title / Brand -->
+                <div class="flex-shrink-0">
+                    <span class="text-white text-xl font-bold">PROY-CSI2 - Photo Gallery</span>
+                </div>
+                <!-- Navigation Links -->
+                <div class="flex space-x-4">
+                    <a routerLink="/home" routerLinkActive="bg-indigo-800 dark:bg-indigo-700"
+                        class="text-white hover:bg-indigo-600 dark:hover:bg-indigo-800 px-3 py-2 rounded-md text-sm font-medium transition duration-150">
+                        Home
+                    </a>
+                    <a routerLink="/photos" routerLinkActive="bg-indigo-800 dark:bg-indigo-700"
+                        class="text-white hover:bg-indigo-600 dark:hover:bg-indigo-800 px-3 py-2 rounded-md text-sm font-medium transition duration-150">
+                        View Photos
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content / Router Outlet -->
+
+    <main class="flex-grow">
+        <router-outlet></router-outlet>
+    </main>
+</div>

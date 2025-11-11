@@ -1,0 +1,28 @@
+<!-- File: src/app/components/photo-list/photo-list.component.html -->
+
+<div class="p-4 sm:p-8">
+    <h2 class="text-3xl font-bold text-center text-gray-800 dark:text-white mb-6">Photo List (First 100)</h2>
+
+    <!-- Responsive Grid: 1 column (mobile), 2 (sm/tablet), 3 (md), 4 (lg/desktop) -->
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        @for (photo of photos(); track photo.id) {
+        <div
+            class="bg-white dark:bg-gray-700 rounded-xl shadow-lg hover:shadow-xl transition duration-300 overflow-hidden border border-gray-100 dark:border-gray-600">
+            <img [src]="photo.thumbnailUrl" [alt]="photo.title" class="w-full h-48 object-cover">
+            <div class="p-4 flex flex-col justify-between h-36">
+                <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 line-clamp-2" [title]="photo.title">
+                    {{ photo.title }}
+                </h3>
+                <button [routerLink]="['/detail', photo.id]"
+                    class="mt-3 w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-lg transition duration-150 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50">
+                    View Detail
+                </button>
+            </div>
+        </div>
+        }
+        @empty {
+        <p class="col-span-full text-center text-gray-500 dark:text-gray-400">Loading photos...</p>
+        }
+    </div>
+</div>

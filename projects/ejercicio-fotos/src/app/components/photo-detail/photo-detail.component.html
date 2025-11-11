@@ -1,0 +1,55 @@
+<!-- File: src/app/components/photo-detail/photo-detail.component.html -->
+
+<div class="p-4 sm:p-8 max-w-4xl mx-auto">
+  @if (photo()) {
+  <div class="bg-white dark:bg-gray-700 rounded-xl shadow-2xl p-6 lg:p-10">
+    <h2 class="text-3xl font-bold text-gray-800 dark:text-white mb-6 text-center">Detail and Edit Photo #{{ photo()!.id
+      }}</h2>
+
+    <!-- Full Image -->
+    <div class="mb-8 overflow-hidden rounded-lg">
+      <img [src]="photo()!.url" [alt]="photo()!.title"
+        class="w-full h-auto object-cover border border-gray-200 dark:border-gray-600 transition duration-300 hover:scale-[1.01]">
+    </div>
+
+    <!-- Reactive Form -->
+    <form [formGroup]="photoForm" (ngSubmit)="saveChanges()" class="space-y-6">
+      <div>
+        <label for="title" class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">Title</label>
+        <input id="title" type="text" formControlName="title"
+          class="mt-1 block w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-800 dark:text-gray-100">
+        @if (photoForm.get('title')?.invalid && photoForm.get('title')?.touched) {
+        <p class="text-red-500 text-xs mt-1">Title is required.</p>
+        }
+      </div>
+
+      <div>
+        <label for="url" class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">Image URL</label>
+        <input id="url" type="url" formControlName="url"
+          class="mt-1 block w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-800 dark:text-gray-100">
+        @if (photoForm.get('url')?.invalid && photoForm.get('url')?.touched) {
+        <p class="text-red-500 text-xs mt-1">URL is required and must be valid.</p>
+        }
+      </div>
+
+      <button type="submit" [disabled]="photoForm.invalid"
+        class="w-full py-3 px-4 border border-transparent rounded-lg shadow-md text-white font-semibold bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition duration-150 disabled:opacity-50">
+        Save Changes (Check Console)
+      </button>
+    </form>
+
+    <div class="mt-6 p-4 bg-indigo-50 dark:bg-indigo-900/50 rounded-lg text-sm text-gray-700 dark:text-gray-200">
+      <p><span class="font-medium">ID:</span> {{ photo()!.id }}</p>
+      <p><span class="font-medium">Album ID:</span> {{ photo()!.albumId }}</p>
+    </div>
+
+  </div>
+
+
+  } @else if (loading()) {
+  <div class="text-center text-gray-600 dark:text-gray-300 mt-20">Loading photo details...</div>
+  } @else {
+  <div class="text-center text-red-500 dark:text-red-400 mt-20">Photo not found or loading error.</div>
+  }
+
+</div>

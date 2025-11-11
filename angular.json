@@ -292,6 +292,94 @@
           }
         }
       }
+    },
+    "ejercicio-fotos": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/ejercicio-fotos",
+      "sourceRoot": "projects/ejercicio-fotos/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "options": {
+            "browser": "projects/ejercicio-fotos/src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "projects/ejercicio-fotos/tsconfig.app.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/ejercicio-fotos/public"
+              }
+            ],
+            "styles": [
+              "projects/ejercicio-fotos/src/styles.css"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular/build:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "ejercicio-fotos:build:production"
+            },
+            "development": {
+              "buildTarget": "ejercicio-fotos:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular/build:extract-i18n"
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "projects/ejercicio-fotos/tsconfig.spec.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/ejercicio-fotos/public"
+              }
+            ],
+            "styles": [
+              "projects/ejercicio-fotos/src/styles.css"
+            ]
+          }
+        }
+      }
     }
+  },
+  "cli": {
+    "analytics": "c4f05feb-c4c0-441e-aa9b-817603c6da04"
   }
 }
